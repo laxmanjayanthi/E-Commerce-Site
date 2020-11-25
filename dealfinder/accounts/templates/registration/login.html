@@ -1,0 +1,62 @@
+{% extends 'base2.html' %}
+{% load bootstrap4 %}
+
+{% block body  %}
+<head>
+	<style>
+		#a
+		{
+			margin-left: 160px;
+			background-color: #2E8B57;
+			font-size: medium;
+			font-weight: 200;
+			border: 2px solid #2E8B57 ;
+			text-align: center;
+			color: white;
+			padding: 5px 30px 5px 30px;
+		
+			
+
+		}
+	</style>
+</head>
+
+<section>
+			<div id="page-wrapper" class="sign-in-wrapper">
+				<div class="graphs">
+					<div class="sign-in-form">
+						<div class="sign-in-form-top">
+							<h1>Log in</h1>
+						</div>
+						<div class="signin">
+							
+						
+						<form  method="post" class="form">
+							{% csrf_token %}
+							{% bootstrap_form form %}
+							{% buttons %}
+								
+								<a type="submit" class="btn btn-primary" id="a"  href="/products">Log in</a>
+							{% endbuttons %}
+						</form>
+
+						</div>
+					
+					</div>
+				</div>
+			</div>
+		
+	</section>
+	<footer>
+				
+		<div class="footer-bottom text-center">
+		<div class="container">
+			<div class="footer-logo">
+				<a href="index.html"><span>Re</span>sale</a>
+			</div>
+			
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	</footer>
+{% endblock body %}    

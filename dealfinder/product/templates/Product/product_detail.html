@@ -1,0 +1,84 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block body %}
+<!--single-page-->
+	<div class="single-page main-grid-border">
+		<div class="container">
+			<ol class="breadcrumb" style="margin-bottom: 5px;">
+				<li><a href="/">Home</a></li>
+				<li><a href="{% url 'products:product_list'%}">All Ads</a></li>
+				<li class="active">Mobile Phone</li>
+			</ol>
+			<div class="product-desc">
+				<div class="col-md-7 product-view">
+					<h2>{{product_detail.name}}</h2>
+					<p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">{{product_detail.state}}</a>, <a href="#">{{product_detail.city}}</a>| Added at {{product_detail.created}}, Ad ID: 987654321</p>
+					<div class="flexslider">
+						<ul class="slides">
+							{% for images in product_images %}
+								<li data-thumb="{{images.image.url}}">
+									<img src="{{images.image.url}}" />
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<!-- FlexSlider -->
+					  <script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
+					<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
+
+						<script>
+					// Can also be used with $(document).ready()
+					$(window).load(function() {
+					  $('.flexslider').flexslider({
+						animation: "slide",
+						controlNav: "thumbnails"
+					  });
+					});
+					</script>
+					<!-- //FlexSlider -->
+					<div class="product-details">
+						<h4>Brand : <a href="#"> {{product_detail.brand}}</a></h4>
+						<h4>Views : <strong>150</strong></h4>
+						<p><strong>Summary</strong> : {{product_detail.description}}</p>
+					
+					</div>
+				</div>
+				<div class="col-md-5 product-details-grid">
+					<div class="item-price">
+						<div class="product-price">
+							<p class="p-price">Price</p>
+							<h3 class="rate">{{product_detail.price}}</h3>
+							<div class="clearfix"></div>
+						</div>
+						<div class="condition">
+							<p class="p-price">Condition</p>
+							<h4>{{product_detail.condition}}</h4>
+							<div class="clearfix"></div>
+						</div>
+						<div class="itemtype">
+							<p class="p-price">Item Type</p>
+							<h4>{{product_detail.category}}</h4>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="interested text-center">
+						<h4>Interested in this Ad?<small> Contact the Seller!</small></h4>
+						<p><i class="glyphicon glyphicon-earphone"></i>{{product_detail.mobile}}</p>
+					</div>
+						<div class="tips">
+						<h4>Safety Tips for Buyers</h4>
+							<ol>
+								<li><a href="#">Always meet the seller at a safe location such as Metro stations, shopping malls or any famous meeting point.</a></li>
+								<li><a href="#">Don’t forget to inspect the item before purchasing. Following this one rule will help you avoid most scams. This also applies for house rentals</a></li>
+								<li><a href="#">Trust your guts and watch out for unrealistic offers. If it appears too good to be true, it probably is.</a></li>
+								<li><a href="#">Avoid items that have suspiciously lower prices than what is offered in the market.</a></li>
+								<li><a href="#">Never send an advance partial or full payment, or use a debit card to pay someone you do not know before collecting your item</a></li>
+							</ol>
+						</div>
+				</div>
+			<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--//single-page-->
+{% endblock body%}	
